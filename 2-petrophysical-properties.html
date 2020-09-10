@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Measuring Petrophysical Properties | Prediction of Petrophysical Properties Using Machine Learning and Hierarchical Multi-Task Linear Models</title>
+  <meta name="description" content="Chapter 2 Measuring Petrophysical Properties | Prediction of Petrophysical Properties Using Machine Learning and Hierarchical Multi-Task Linear Models" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Measuring Petrophysical Properties | Prediction of Petrophysical Properties Using Machine Learning and Hierarchical Multi-Task Linear Models" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Measuring Petrophysical Properties | Prediction of Petrophysical Properties Using Machine Learning and Hierarchical Multi-Task Linear Models" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="3-kabs-regression.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html"><i class="fa fa-check"></i><b>2</b> Measuring Petrophysical Properties</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html#routine-core-analysis"><i class="fa fa-check"></i><b>2.1</b> Routine Core Analysis</a></li>
+<li class="chapter" data-level="2.2" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html#special-core-analysis"><i class="fa fa-check"></i><b>2.2</b> Special Core Analysis</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html#mercury-injection-capillary-pressure"><i class="fa fa-check"></i><b>2.2.1</b> Mercury Injection Capillary Pressure</a></li>
+<li class="chapter" data-level="2.2.2" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html#centrifuge-capillary-pressure"><i class="fa fa-check"></i><b>2.2.2</b> Centrifuge Capillary Pressure</a></li>
+<li class="chapter" data-level="2.2.3" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html#relative-permeability"><i class="fa fa-check"></i><b>2.2.3</b> Relative Permeability</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html"><i class="fa fa-check"></i><b>3</b> Absolute Permeability Regression</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#pchg-feat-eng"><i class="fa fa-check"></i><b>3.1</b> Mercury Porosimetry Feature Engineering</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#statistical-features"><i class="fa fa-check"></i><b>3.1.1</b> Statistical Features</a></li>
+<li class="chapter" data-level="3.1.2" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#linear-features"><i class="fa fa-check"></i><b>3.1.2</b> Linear Features</a></li>
+<li class="chapter" data-level="3.1.3" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#pore-throat-size-class-distribution"><i class="fa fa-check"></i><b>3.1.3</b> Pore Throat Size Class Distribution</a></li>
+<li class="chapter" data-level="3.1.4" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#gauss-mixture-fit-feat"><i class="fa fa-check"></i><b>3.1.4</b> Gaussian Mixture Fit Features</a></li>
+<li class="chapter" data-level="3.1.5" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#dimensionality-reduction-features"><i class="fa fa-check"></i><b>3.1.5</b> Dimensionality Reduction Features</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#absolute-permeability-regression-models"><i class="fa fa-check"></i><b>3.2</b> Absolute Permeability Regression Models</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#linear-regression-models"><i class="fa fa-check"></i><b>3.2.1</b> Linear Regression Models</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#non-linear-regression"><i class="fa fa-check"></i><b>3.2.2</b> Black-Box Machine Learning Models</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-hierarchical-linear-regression.html"><a href="4-hierarchical-linear-regression.html"><i class="fa fa-check"></i><b>4</b> Hierarchical Multi-Task Linear Regression</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-hierarchical-linear-regression.html"><a href="4-hierarchical-linear-regression.html#multi-task-linear-regression"><i class="fa fa-check"></i><b>4.1</b> Multi-Task Linear Regression</a></li>
+<li class="chapter" data-level="4.2" data-path="4-hierarchical-linear-regression.html"><a href="4-hierarchical-linear-regression.html#hierarchical-linear-regression-1"><i class="fa fa-check"></i><b>4.2</b> Hierarchical Linear Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Prediction of Petrophysical Properties Using Machine Learning and Hierarchical Multi-Task Linear Models</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="petrophysical-properties" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Measuring Petrophysical Properties</h1>
+<p>The measurement of petrophysical properties is performed through specialized laboratory experiments, which in the petroleum industry are classified as routine or special core analysis (SCAL), depending on the experiment complexity and on its investigated properties.</p>
+<p>The analyzed rock samples may be extracted from well cores or from open borehole sidewall sampling tools, and can measure from one to several centimeters <span class="citation">(Kennedy <a href="#ref-Kennedy2015" role="doc-biblioref">2015</a>)</span>. The rock samples are commonly extracted as cylindrical plugs, but can also have irregular shapes, case in which they are referred to as rock fragments.</p>
+<div id="routine-core-analysis" class="section level2">
+<h2><span class="header-section-number">2.1</span> Routine Core Analysis</h2>
+<p>Experimental measurements of a rock sample pore volume <span class="math inline">\(V_p\)</span>, grain volume <span class="math inline">\(V_g\)</span>, porosity <span class="math inline">\(\phi\)</span> and absolute permeability <span class="math inline">\(k_{abs}\)</span> are commonly referred to as routine core analysis.</p>
+<p>Porous media can be pictorially described as being constituted of grain and pore spaces (Figure <a href="2-petrophysical-properties.html#fig:porous-media">2.1</a>). The percentage of the total space occupied by pores is known as rock porosity. <span class="math inline">\(V_p\)</span> and <span class="math inline">\(\phi\)</span> measurements are important for the evaluation of hydrocarbon reserve volumes.</p>
+<div class="figure" style="text-align: center"><span id="fig:porous-media"></span>
+<img src="figure/2-1-Porous-media.png" alt="Pore media grain and pore spaces" width="100%" />
+<p class="caption">
+Figure 2.1: Pore media grain and pore spaces
+</p>
+</div>
+<p><span class="math display" id="eq:phi">\[\begin{equation} 
+  \phi = \frac{V_p}{V_p + V_g}
+  \tag{2.1}
+\end{equation}\]</span></p>
+<p>At reservoir conditions, porous space is filled by either water, oil or gas, each of which in a separate phase. The percentage of the porous volume occupied by water, oil or gas is known as water, oil or gas saturation, respectively.</p>
+<p><span class="math display" id="eq:saturation">\[\begin{equation} 
+  S_f = \frac{V_f}{V_p},\quad \text{for} \;f \; \text{in} \; {w, o, g}
+  \tag{2.2}
+\end{equation}\]</span></p>
+<p>Darcy’s law <a href="2-petrophysical-properties.html#eq:darcy">(2.3)</a> describes the linear relationship between instantaneous flow rate <span class="math inline">\(q\)</span> and a pressure gradient <span class="math inline">\(\frac{\partial p}{\partial x}\)</span> in laminar single-phase flow <span class="citation">(Tiab and Donaldson <a href="#ref-Tiab2004" role="doc-biblioref">2004</a>)</span>. Given a stable steady-state single-phase flow, the porous media absolute permeability <span class="math inline">\(k_{abs}\)</span> is directly proportional to the instantaneous flow rate <span class="math inline">\(q\)</span>, fluid viscosity <span class="math inline">\(\mu\)</span>, and is inversely proportional to the pressure gradient <span class="math inline">\(\frac{\partial p}{\partial x}\)</span> and cross-sectional area <span class="math inline">\(A\)</span>.</p>
+<p><span class="math display" id="eq:darcy">\[\begin{equation} 
+  q = k_{abs}\frac{A}{\mu}\frac{\partial p}{\partial x}
+  \tag{2.3}
+\end{equation}\]</span></p>
+</div>
+<div id="special-core-analysis" class="section level2">
+<h2><span class="header-section-number">2.2</span> Special Core Analysis</h2>
+<p>Measurement of multiphase properties of porous media, on which both viscous and capillary forces may be relevant, is usually more complex and incurs in longer and costlier experiments when compared to single-phase routine core analysis measurements.</p>
+<div id="mercury-injection-capillary-pressure" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Mercury Injection Capillary Pressure</h3>
+<p>In multi-phase porous systems, due to different interaction characteristics between fluid and solid phases, the attraction between the molecules of one of the fluid phases and the solid surfaces may be greater than that of the other fluid phase. This physical behavior is known as wettability, and it is responsible for capillary forces and related phenomena.</p>
+<p>For a given multiphase porous system, with a surface tension <span class="math inline">\(\sigma\)</span> between fluid phases, wettability may be quantified by the contact angle <span class="math inline">\(\theta\)</span> formed by the fluid phase boundary-solid interface, as depicted in Figure <a href="2-petrophysical-properties.html#fig:contact-angle">2.2</a>.</p>
+<p>The Young-Laplace equation describes the capillary pressure sustained across the interface between fluids at a pore throat constriction <span class="citation">(Tiab and Donaldson <a href="#ref-Tiab2004" role="doc-biblioref">2004</a>)</span>. A heterogeneous porous system is connected by pore throats of several different radii. For a system consisting of mercury and mercury vapor, with surface tension <span class="math inline">\(\sigma_{Hg-air}\)</span> and contact angle <span class="math inline">\(\theta_{Hg-air}\)</span> with the rock surface, the relationship between capillary pressure and pore throat radius r may be described by equation <a href="2-petrophysical-properties.html#eq:young">(2.4)</a>. Capillary forces may strongly affect the distribution of fluid phases in the porous space.</p>
+<div class="figure" style="text-align: center"><span id="fig:contact-angle"></span>
+<img src="figure/2-2-Contact-Angle.png" alt="Contact Angle between fluid phase boundary and solid surface" width="80%" />
+<p class="caption">
+Figure 2.2: Contact Angle between fluid phase boundary and solid surface
+</p>
+</div>
+<p><span class="math display" id="eq:young">\[\begin{equation} 
+  P_c = \frac{2\sigma_{Hg-air} \cos{\theta_{Hg-air}}}{r}
+  \tag{2.4}
+\end{equation}\]</span></p>
+<p>A Mercury Injection Capillary Pressure (MICP) experiment consists of pre-specified and controlled mercury injection steps in a porous medium, previously subjected to a vacuum. It is usually performed on rock fragments with around one cubic centimeter, which allows it to be executed both in well core and sidewall sample fragments. Automated acquisition systems for MICP are commercially available <span class="citation">(Micromeritics <a href="#ref-Micromeritics2020" role="doc-biblioref">2020</a>)</span>(Figure <a href="2-petrophysical-properties.html#fig:autopore">2.3</a>), making it a relatively fast and cheap experiment.</p>
+<p>A fixed pressure stabilization time and a geometric progression sequence of increasing pressure steps is defined before each MICP experiment. At each pressure step, after the pre-defined pressure stabilization time, the volume of intruded mercury in the rock sample pore space is recorded. Given calibrated mercury-mercury-vapor surface tension <span class="math inline">\(\sigma_{hg-air}\)</span> and contact angle <span class="math inline">\(\theta_{hg-air}\)</span>, each pressure step may be associated with a pore throat radius according to equation <a href="2-petrophysical-properties.html#eq:young">(2.4)</a>. The cumulative intruded mercury volume <span class="math inline">\(V_{hg}\)</span> at each step, thus, corresponds to the porous volume accessible by pore throats with radius equal to or smaller than the relationship given by equation <a href="2-petrophysical-properties.html#eq:young">(2.4)</a>. Mercury saturation <span class="math inline">\(S_{hg}\)</span> at each step may be calculated using equation <a href="2-petrophysical-properties.html#eq:shg">(2.5)</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:autopore"></span>
+<img src="figure/2-3-Autopore.png" alt="AutoPore IV Series Mercury Porosimeter (left) and glass penetrometer (right) used in automated MICP acquisitions." width="50%" />
+<p class="caption">
+Figure 2.3: AutoPore IV Series Mercury Porosimeter (left) and glass penetrometer (right) used in automated MICP acquisitions.
+</p>
+</div>
+<p><span class="math display" id="eq:shg">\[\begin{equation} 
+  S_{hg} = \frac{V_{hg}}{V_T}
+  \tag{2.5}
+\end{equation}\]</span></p>
+<p>The total fragment volume <span class="math inline">\(V_T\)</span> is estimated during the experimental data interpretation procedure, using the difference of the total glass bulb volume and the intruded mercury volume necessary to “envelope” the rock fragment and start intruding the porous space. This happens at a pressure known as entrance capillary pressure <span class="math inline">\(P_e\)</span> The determination of the exact value of this entrance capillary pressure may introduce uncertainty on experimental results, particularly for very irregular shaped or vuggy rock samples.</p>
+<p>The recorded capillary pressure <span class="math inline">\(P_c\)</span> and mercury saturation <span class="math inline">\(S_{hg}\)</span> values form a capillary pressure curve, whose format is directly related to the distribution of accessible pore volume in the porous medium of the rock sample. Figure <a href="2-petrophysical-properties.html#fig:pc-curves">2.4</a> shows several capillary pressure curves acquired in MICP experiments.</p>
+<p>A widely used transformation of capillary pressure curves is described by equation <a href="2-petrophysical-properties.html#eq:pdf">(2.6)</a> <span class="citation">(Lenormand <a href="#ref-Lenormand2003" role="doc-biblioref">2003</a>)</span>, which constructs a probability distribution of accessible pore volume as a function of the logarithm of the associated pore throat radius <span class="math inline">\(r\)</span>. Figure <a href="2-petrophysical-properties.html#fig:pdf-curves">2.5</a> shows pore volume probability distribution curves <span class="math inline">\(p(\log{r})\)</span>, for the same MICP experiments depicted in Figure <a href="2-petrophysical-properties.html#fig:pc-curves">2.4</a>.</p>
+<p><span class="math display" id="eq:pdf">\[\begin{equation} 
+  p(\log{r}) = \frac{dS_{hg}}{d \log{P_c}}
+  \tag{2.6}
+\end{equation}\]</span></p>
+<div class="figure" style="text-align: center"><span id="fig:pc-curves"></span>
+<img src="figure/2-4-Pc-curves.png" alt="Mercury Injection Capillary Pressure Curves for several rock samples, colored by absolute permeability." width="90%" />
+<p class="caption">
+Figure 2.4: Mercury Injection Capillary Pressure Curves for several rock samples, colored by absolute permeability.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:pdf-curves"></span>
+<img src="figure/2-5-pdf-curves.png" alt="Accessible pore volume probability distribution curves p(log r), for the same MICP experiments depicted in Figure 2.4." width="90%" />
+<p class="caption">
+Figure 2.5: Accessible pore volume probability distribution curves p(log r), for the same MICP experiments depicted in Figure 2.4.
+</p>
+</div>
+<p>Several authors have proposed correlations between capillary pressure curve features and absolute permeability <span class="citation">(Kolodzie <a href="#ref-Kolodzie1980" role="doc-biblioref">1980</a>; Pittman <a href="#ref-Pittman1992" role="doc-biblioref">1992</a>; Purcell <a href="#ref-Purcell1949" role="doc-biblioref">1949</a>; Swanson <a href="#ref-Swanson1981" role="doc-biblioref">1981</a>)</span>, among others. These correlations will be further explorer on chapter .</p>
+<p>In this work, a dataset of 2324 MICP curves acquired on rock fragments of sandstone and carbonate reservoirs from several Brazilian reservoirs was compiled. Routine and special core analysis results, performed on core sample plugs and sidewall samples extracted from the same well depths as the rock fragments were incorporated in the dataset.</p>
+<p>Given that the size of the rock fragments utilized for MICP measurements were in many cases many times smaller than the size of the corresponding core sample plugs and sidewall samples, where routine and special core analysis were performed, it is very likely that, for many samples, the rock fragments may not constitute a representative volume of the porous space <span class="citation">(Blunt <a href="#ref-Blunt2017" role="doc-biblioref">2017</a>)</span>. Indeed, as illustrated in Figure <a href="2-petrophysical-properties.html#fig:heterogeneity">2.6</a>, it is possible to assess that heterogeneous reservoirs display many more outlier samples on correlations between MICP and core analysis data, when compared to more homogeneous reservoirs.</p>
+<div class="figure" style="text-align: center"><span id="fig:heterogeneity"></span>
+<img src="figure/2-6-heterogeneity.png" alt="Relationship between median pore throat radius and absolute permeability of several different reservoirs, from most to least heterogeneous" width="85%" />
+<p class="caption">
+Figure 2.6: Relationship between median pore throat radius and absolute permeability of several different reservoirs, from most to least heterogeneous
+</p>
+</div>
+</div>
+<div id="centrifuge-capillary-pressure" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Centrifuge Capillary Pressure</h3>
+<p>The centrifuge method is a standard technique for capillary pressure curve estimation of porous media. The method consists of imposing a capillary pressure profile on a rotating rock sample through centrifugal acceleration imposition in increasing rotation speed steps, and recording the average sample saturation at each step <span class="citation">(Tiab and Donaldson <a href="#ref-Tiab2004" role="doc-biblioref">2004</a>)</span>. The fundamental equations that describe the method were developed by Hassler and Brunner <span class="citation">(Hassler and Brunner <a href="#ref-Hassler1945" role="doc-biblioref">1945</a>)</span>:</p>
+<div class="figure" style="text-align: center"><span id="fig:centrifuge-geometry"></span>
+<img src="figure/2-7-centrifuge-geometry.png" alt="Drainage Oil-Water Centrifuge capillary pressure experiment geometry." width="60%" />
+<p class="caption">
+Figure 2.7: Drainage Oil-Water Centrifuge capillary pressure experiment geometry.
+</p>
+</div>
+<p><span class="math display" id="eq:pc">\[\begin{equation} 
+  P_c = \frac{1}{2}\omega^2\Delta \rho (r^2-r_{2}^{2})
+  \tag{2.7}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:B">\[\begin{equation} 
+  B = 1 - (\frac{r_1}{r_2})^2
+  \tag{2.8}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:Sw">\[\begin{equation} 
+  S_w = \frac{V_w}{V_p} = \frac{V_w}{V_w + V_o}
+  \tag{2.9}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:meansw">\[\begin{equation} 
+  \overline{S_w}(P_c)=\frac{(1+\sqrt{1-B})}{2}\int_0^1{\frac{S_w(xP_c)}{\sqrt{1-Bx}}} dx
+  \tag{2.10}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(\omega\)</span> is the centrifuge rotation speed, <span class="math inline">\(\Delta \rho\)</span> is the difference in density between the displacing and displaced fluids, <span class="math inline">\(L\)</span> is the rock sample length, <span class="math inline">\(r\)</span> is the radius to the centrifuge rotation center, <span class="math inline">\(r_1\)</span> and <span class="math inline">\(r_2\)</span> are the radial distances to the sample extremities, <span class="math inline">\(V_p\)</span>, <span class="math inline">\(V_w\)</span> and <span class="math inline">\(V_o\)</span> are the sample pore, water and oil volumes, <span class="math inline">\(S_w (P_c)\)</span> is the water saturation at a given point in the sample subjected to a <span class="math inline">\(P_c\)</span> capillary pressure, and <span class="math inline">\(\overline{S_w}\)</span> is the sample average water saturation.</p>
+<p>Several methods have been proposed for the estimation of capillary pressure curves from centrifuge experiments. These methods may be classified as direct or inverse according to how they solve the centrifuge saturation equation. Direct methods use several proposed differential and integral approximations of the saturation equation to directly estimate capillary-pressure curves from centrifuge experiment measurements at discrete capillary-pressure steps <span class="citation">(Forbes <a href="#ref-Forbes1994" role="doc-biblioref">1994</a>; Hassler and Brunner <a href="#ref-Hassler1945" role="doc-biblioref">1945</a>; Skuse, Flroozabadl, and Ramey Jr. <a href="#ref-Skuse1992" role="doc-biblioref">1992</a>)</span>. Inverse methods parameterize capillary-pressure curves and solve the saturation equation using non-linear regression <span class="citation">(Bentsen <a href="#ref-Bentsen1977" role="doc-biblioref">1977</a>)</span> or linear regression with spline basis functions <span class="citation">(Nordtvedt and Kolltvelt <a href="#ref-Nordtvedt1991" role="doc-biblioref">1991</a>)</span>.</p>
+<div class="figure" style="text-align: center"><span id="fig:centrifuge-experiment"></span>
+<img src="figure/2-8-centrifuge-experiment.png" alt="Estimation of capillary pressure curve from centrifuge measurements." width="70%" />
+<p class="caption">
+Figure 2.8: Estimation of capillary pressure curve from centrifuge measurements.
+</p>
+</div>
+<p>In this work, a dataset of 135 capillary pressure curves estimated from centrifuge experiments was compiled. Using the parameterization <a href="2-petrophysical-properties.html#eq:albu">(2.11)</a>, proposed in <span class="citation">(Albuquerque et al. <a href="#ref-Albuquerque2018" role="doc-biblioref">2018</a>)</span>, each of the capillary pressure curves was fitted using a least-squares minimization procedure, with parameters <span class="math inline">\(S_{wi}\)</span>, <span class="math inline">\(P_e\)</span>, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>.</p>
+<p><span class="math display" id="eq:albu">\[\begin{equation} 
+  S_w(P_c, S_{wi}, \alpha, \beta, P_w) = \frac{1+\alpha S_{wi}(P_c - P_e)^\beta}{(1+\alpha (P_c - P_e)^\beta}
+  \tag{2.11}
+\end{equation}\]</span></p>
+<div class="figure" style="text-align: center"><span id="fig:pcc-dataset"></span>
+<img src="figure/2-9-pcc-dataset.png" alt="Sample of the experimental capillary pressure curve dataset (points) and fitted capillary pressure model (lines)." width="70%" />
+<p class="caption">
+Figure 2.9: Sample of the experimental capillary pressure curve dataset (points) and fitted capillary pressure model (lines).
+</p>
+</div>
+<p>This parameterization is such that for high values of capillary pressure, water saturation <span class="math inline">\(S_w\)</span> approaches <span class="math inline">\(S_{wi}\)</span>, a parameter thus named irreducible water saturation. In a drainage capillary pressure model, the smallest pressure at which the saturation of the sample can be reduced from one hundred per cent is termed “entrance” capillary pressure <span class="citation">(Peters <a href="#ref-Peters2012" role="doc-biblioref">2012</a>)</span>, modeled by parameter <span class="math inline">\(P_e\)</span> in equation <a href="2-petrophysical-properties.html#eq:albu">(2.11)</a>. The remainder parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are associated with the capillary pressure curve steepness and shape.</p>
+<p><span class="math display" id="eq:lim-swi">\[\begin{equation} 
+  \lim_{P_c \to +\infty} S_w = S_{wi}
+  \tag{2.12}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:lim-pe">\[\begin{equation} 
+  P_c(S_{w}=1) = P_e
+  \tag{2.13}
+\end{equation}\]</span></p>
+<p>Considering a transformation analogous to the one utilized for mercury injection capillary pressure curves <a href="2-petrophysical-properties.html#eq:pdf">(2.6)</a>, pore volume probability distribution curves <span class="math inline">\(p(\log r)\)</span> may be estimated from the fitted centrifuge capillary pressure curve parameters, as described by equation <a href="2-petrophysical-properties.html#eq:pdf-pcc">(2.14)</a>.</p>
+<p><span class="math display" id="eq:pdf-pcc">\[\begin{equation} 
+  p(\log r) = \frac{dS_w}{d \log{P_c}} = \frac{\alpha \beta S_{wi} (S_w - S_{wi})(P_c - P_e)^{\beta - 1}}{1 + \alpha (P_c - P_e)^\beta}
+  \tag{2.14}
+\end{equation}\]</span></p>
+<div class="figure" style="text-align: center"><span id="fig:pcc-params"></span>
+<img src="figure/2-10a-pcc-params-curves.png" alt="Sample centrifuge capillary pressure curves, parameterized by equation (2.11), and corresponding pore volume probability distribution curves p(log r)." width="70%" /><img src="figure/2-10b-pcc-params-pdf.png" alt="Sample centrifuge capillary pressure curves, parameterized by equation (2.11), and corresponding pore volume probability distribution curves p(log r)." width="70%" />
+<p class="caption">
+Figure 2.10: Sample centrifuge capillary pressure curves, parameterized by equation (2.11), and corresponding pore volume probability distribution curves p(log r).
+</p>
+</div>
+<p>As graphically displayed in Figure <a href="2-petrophysical-properties.html#fig:pcc-params">2.10</a>, the parameter <span class="math inline">\(\alpha\)</span> can be shown to be associated with the location of the distribution <span class="math inline">\(p(\log{r})\)</span> and the parameter <span class="math inline">\(\beta\)</span> can be shown to be associated with its scale or dispersion.</p>
+<p>A dataset combining the fitted centrifuge capillary pressure curve parameters and several MICP features, detailed on chapter , of rock fragments extracted from corresponding core locations was assembled. As exemplified in Figure <a href="2-petrophysical-properties.html#fig:pcc-pchg">2.11</a>, associated pore volume distributions of corresponding centrifuge capillary pressure and MICP curves often display similar distributions, though to varying degrees as MICP curves may have been measured in rock fragments which may or may not be representative of its associated core sample pore volume. MICP experiments also cover a larger range of pore throat radius sizes and display significantly more detail, as a much tighter pressure and corresponding pore throat radius experimental grid is sampled.</p>
+<div class="figure" style="text-align: center"><span id="fig:pcc-pchg"></span>
+<img src="figure/2-11-pcc-pchg-pdf.png" alt="Associated pore volume distributions p(log r) of correspondent Centrifuge Capillary Pressure (blue curve) and MICP (black curve) samples." width="90%" />
+<p class="caption">
+Figure 2.11: Associated pore volume distributions p(log r) of correspondent Centrifuge Capillary Pressure (blue curve) and MICP (black curve) samples.
+</p>
+</div>
+<p>In Figure <a href="2-petrophysical-properties.html#fig:pchg-correlations">2.12</a>, it is possible to identify significant correlations between corresponding centrifuge capillary pressure curves <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(S_{wi}\)</span> and MICP median pore throat radius <span class="math inline">\(r_{median}\)</span> parameters. Both <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(S_{wi}\)</span> parameters can be seen, thus, as correlated with the location of the distribution <span class="math inline">\(p(\log{r})\)</span>.</p>
+<div class="figure" style="text-align: center"><span id="fig:pchg-correlations"></span>
+<img src="figure/2-12a-correlations-pchg.png" alt="Correlations between parameters alpha, Swi and median pore throat radius of correspondent rock fragment p(log r) distribution." width="45%" /><img src="figure/2-12b-correlations-pchg.png" alt="Correlations between parameters alpha, Swi and median pore throat radius of correspondent rock fragment p(log r) distribution." width="45%" />
+<p class="caption">
+Figure 2.12: Correlations between parameters alpha, Swi and median pore throat radius of correspondent rock fragment p(log r) distribution.
+</p>
+</div>
+</div>
+<div id="relative-permeability" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> Relative Permeability</h3>
+<p>In porous media multiphase flow, relative permeability describes the linear proportion by which each fluid flow is penalized when compared to Darcy’s law <a href="2-petrophysical-properties.html#eq:darcy">(2.3)</a>. For a water-oil two-phase flow, the following relations describe oil (<span class="math inline">\(k_{ro}\)</span>) and water (<span class="math inline">\(k_{rw}\)</span>) relative permeability, and the their associated fractionary water flow (<span class="math inline">\(f_{w}\)</span>).</p>
+<p><span class="math display" id="eq:kro">\[\begin{equation} 
+  q_o(S_w) = k_{ro}(S_w) \frac{k_{abs}A}{\mu_o L} \Delta p
+  \tag{2.15}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:krw">\[\begin{equation} 
+  q_w(S_w) = k_{rw}(S_w) \frac{k_{abs}A}{\mu_w L} \Delta p
+  \tag{2.16}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:fw">\[\begin{equation} 
+  f_w = \frac{\frac{k_{rw}}{\mu_w}}{\frac{k_{rw}}{\mu_w} + \frac{k_{ro}}{\mu_o}}
+  \tag{2.17}
+\end{equation}\]</span></p>
+<p>The most widely used experimental setup for water-oil relative permeability determination is the unsteady-state water-oil relative permeability experiment. In a unsteady-state water-oil relative permeability experiment, a sample initially satured at irreducible water saturation <span class="math inline">\(S_{wi}\)</span> condition is subjected to a constant rate water injection, simulating reservoir secondary recovery water injection.</p>
+<p>During the experiment, water injection flow rate <span class="math inline">\(q_{w_{inj}}\)</span> and exit pressure <span class="math inline">\(P_{out}\)</span> are kept constant, and cumulative oil production <span class="math inline">\(N_p\)</span> and pressure differential <span class="math inline">\(\Delta p\)</span> are recorded.</p>
+<div class="figure" style="text-align: center"><span id="fig:krel-experiment"></span>
+<img src="figure/2-13-krel-experiment.png" alt="Unsteady-state relative permeability experimental setup." width="100%" />
+<p class="caption">
+Figure 2.13: Unsteady-state relative permeability experimental setup.
+</p>
+</div>
+<p><span class="math display" id="eq:qwinj">\[\begin{equation} 
+  q_{w_{inj}} = cte 
+  \tag{2.18}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:pout">\[\begin{equation} 
+  P_{out} = cte 
+  \tag{2.19}
+\end{equation}\]</span></p>
+<p>Unsteady state water-oil relative permeability experiments are usually interpreted using either the JBN method <span class="citation">(Johnson, Bossler, and Naumann <a href="#ref-Johnson1959" role="doc-biblioref">1959</a>)</span> or using history matched numerical simulated solutions <span class="citation">(Lenormand and Lenormand <a href="#ref-Lenormand2016" role="doc-biblioref">2016</a>)</span>. Figure <a href="2-petrophysical-properties.html#fig:krel-Np-dP">2.14</a> displays an example of recorded and history matched cumulative oil production <span class="math inline">\(N_p\)</span> and pressure differential <span class="math inline">\(\Delta p\)</span>, obtained using maximum likelihood estimation of the relative permeability parameters that best fit the recorded experimental data.</p>
+<div class="figure" style="text-align: center"><span id="fig:krel-Np-dP"></span>
+<img src="figure/2-14-krel-Np-dP.png" alt="Example of history matched experimental data." width="70%" />
+<p class="caption">
+Figure 2.14: Example of history matched experimental data.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:krel-JBN"></span>
+<img src="figure/2-15-krel-JBN.png" alt="Example of history matched relative permeability and fractionary flow curves compared to analytic JBN interpreted experimental results." width="70%" />
+<p class="caption">
+Figure 2.15: Example of history matched relative permeability and fractionary flow curves compared to analytic JBN interpreted experimental results.
+</p>
+</div>
+<p>History matching is usually performed using parametric relative permeability models and finite difference partial differential equations simulation. The Corey model <span class="citation">(Corey <a href="#ref-Corey1954" role="doc-biblioref">1954</a>)</span>, given by equations <a href="2-petrophysical-properties.html#eq:swd">(2.20)</a><a href="2-petrophysical-properties.html#eq:kro-corey">(2.21)</a><a href="2-petrophysical-properties.html#eq:krw-corey">(2.22)</a>, is a widely used power-law model for relative permeability curves, whose parameters <span class="math inline">\(n_o\)</span> and <span class="math inline">\(n_w\)</span> are commonly referred to as Corey exponents.</p>
+<p><span class="math display" id="eq:swd">\[\begin{equation} 
+  S_{wD} = \frac{S_w - S_{wi}}{1 - S_{wi} - S_{or}} 
+  \tag{2.20}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:kro-corey">\[\begin{equation} 
+  k_{ro}(S_w) = k_{ro@S_{wi}}(1-S_{wD})^{n_o}
+  \tag{2.21}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:krw-corey">\[\begin{equation} 
+  k_{rw}(S_w) = k_{rw@S_{or}}(S_{wD})^{n_w}
+  \tag{2.22}
+\end{equation}\]</span></p>
+<p>The LET model <span class="citation">(Lomeland, Ebeltoft, and Thomas <a href="#ref-Lomeland2005" role="doc-biblioref">2005</a>)</span>, given by equations <a href="2-petrophysical-properties.html#eq:kro-let">(2.23)</a><a href="2-petrophysical-properties.html#eq:krw-let">(2.24)</a>, was developed with six shape parameters <span class="math inline">\(L_o\)</span>, <span class="math inline">\(E_o\)</span>, <span class="math inline">\(T_o\)</span>, <span class="math inline">\(L_w\)</span>, <span class="math inline">\(E_w\)</span>, <span class="math inline">\(T_w\)</span>, and can accommodate much more flexible relative permeability curves. It is commonly used in reservoir simulation models, especially for history matching procedures that demand flexible representations of relative permeability models.</p>
+<p><span class="math display" id="eq:kro-let">\[\begin{equation} 
+  k_{ro}(S_w) = k_{ro@S_{wi}}\frac{(1-S_{wD})^{L_o}}{(1-S_{wD})^{L_o} + E_o(S_{wD})^{T_o}}
+  \tag{2.23}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:krw-let">\[\begin{equation} 
+  k_{rw}(S_w) = k_{rw@S_{or}}\frac{(S_{wD})^{L_w}}{(S_{wD})^{L_w} + E_w(1-S_{wD})^{T_w}}
+  \tag{2.24}
+\end{equation}\]</span></p>
+<p>In this work, a dataset of 226 unsteady-state water-oil relative permeability curves was assembled. LET parameters for each of the 226 curves were fit using maximum likelihood estimation <span class="citation">(DeGroot and Schervish <a href="#ref-DeGroot2012" role="doc-biblioref">2012</a>)</span>. Multivariate and multi-task linear regression models built using this dataset are described on chapter .</p>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Albuquerque2018">
+<p>Albuquerque, Marcelo R, Felipe M Eler, Heitor V R Camargo, André Compan, Dario Cruz, and Carlos Pedreira. 2018. “Estimation of Capillary Pressure Curves from Centrifuge Measurements using Inverse Methods.” <em>Rio Oil &amp; Gas Expo and Conference 2018,</em></p>
+</div>
+<div id="ref-Bentsen1977">
+<p>Bentsen, R G. 1977. “Using Parameter-Estimation Techniques To Convert Centrifuge Data Into a Capillary-Pressure Curve.” <em>Society of Petroleum Engineers Journal</em> 17 (1): 57–64. <a href="https://doi.org/10.2118/5026-PA">https://doi.org/10.2118/5026-PA</a>.</p>
+</div>
+<div id="ref-Blunt2017">
+<p>Blunt, Martin J. 2017. <em>Multiphase Flow in Porous Media: A Pore-Scale Perspective</em>. Cambridge University Press.</p>
+</div>
+<div id="ref-Corey1954">
+<p>Corey, A. T. 1954. “The Interrelation Between Gas and Oil Relative Permeabilities.” <em>Producers Monthly</em> 38-41.</p>
+</div>
+<div id="ref-DeGroot2012">
+<p>DeGroot, Morris H., and Mark J. Schervish. 2012. <em>Probability and Statistics</em>. Edited by Addison-Wesley.</p>
+</div>
+<div id="ref-Forbes1994">
+<p>Forbes, P. 1994. “Simple and Accurate Methods for Converting Centrifuge Data Into Drainage and Imbibition Capillary Pressure Curves.” <em>The Log Analyst</em>.</p>
+</div>
+<div id="ref-Hassler1945">
+<p>Hassler, G. L., and E. Brunner. 1945. “Measurement of Capillary Pressures in Small Core Samples.” <em>Petroleum Transactions of AIME</em> 160 (1): 114–23. <a href="https://doi.org/10.2118/945114-G">https://doi.org/10.2118/945114-G</a>.</p>
+</div>
+<div id="ref-Johnson1959">
+<p>Johnson, E. F., D. P. Bossler, and V. O. Naumann. 1959. “Calculation of Relative Permeability from Displacement Experiments.” <em>Trans. AIME</em>.</p>
+</div>
+<div id="ref-Kennedy2015">
+<p>Kennedy, Martin. 2015. <em>Practical Petrophysics</em>. Vol. 62.</p>
+</div>
+<div id="ref-Kolodzie1980">
+<p>Kolodzie, Stanley. 1980. “Analysis of Pore Throat Size and Use of the Waxman-Smits Equation to Determine Ooip in Spindle Field, Colorado.” In <em>SPE Annual Technical Conference and Exhibition</em>, 10. Dallas, Texas: Society of Petroleum Engineers. <a href="https://doi.org/10.2118/9382-MS">https://doi.org/10.2118/9382-MS</a>.</p>
+</div>
+<div id="ref-Lenormand2003">
+<p>Lenormand, R. 2003. “Interpretation of mercury injection curves to derive pore size distribution.” <em>International Symposium of the Society of Core Analysts</em> Internatio: SCA2003–52. <a href="https://doi.org/SCA2003-52">https://doi.org/SCA2003-52</a>.</p>
+</div>
+<div id="ref-Lenormand2016">
+<p>Lenormand, Roland, and Guillaume Lenormand. 2016. “Recommended Procedure for Determination of Relative Permeabilities.” <em>International Symposium of the Society of Core Analysts</em>, 1–12. <a href="https://www.scaweb.org/wp-content/uploads/SCA-2016-Technical-Papers-Tuesday.pdf">https://www.scaweb.org/wp-content/uploads/SCA-2016-Technical-Papers-Tuesday.pdf</a>.</p>
+</div>
+<div id="ref-Lomeland2005">
+<p>Lomeland, Frode, Einar Ebeltoft, and Wibeke Hammervold Thomas. 2005. “A new versatile relative permeability correlation.” <em>International Symposium of the Society of Core Analysts, Toronto, Canada</em>, 1–12.</p>
+</div>
+<div id="ref-Micromeritics2020">
+<p>Micromeritics. 2020. “AutoPore IV Series: Automated Mercury Porosimeters.” <a href="https://www.micromeritics.com/product-showcase/autopore-iv.aspx">https://www.micromeritics.com/product-showcase/autopore-iv.aspx</a>.</p>
+</div>
+<div id="ref-Nordtvedt1991">
+<p>Nordtvedt, JE, and K Kolltvelt. 1991. “Capillary pressure curves from centrifuge data by use of spline functions.” <em>SPE Reservoir Engineering</em>, no. November: 497–501. <a href="https://doi.org/10.2118/19019-PA">https://doi.org/10.2118/19019-PA</a>.</p>
+</div>
+<div id="ref-Peters2012">
+<p>Peters, E. J. 2012. <em>Advanced Petrophysics</em>. Austin: Live Oak Book Company.</p>
+</div>
+<div id="ref-Pittman1992">
+<p>Pittman, E. D. 1992. “Relationship of porosity and permeability to various parameters derived from mercury injection-capillary pressure curves for sandstone.” <a href="https://doi.org/10.1017/CBO9781107415324.004">https://doi.org/10.1017/CBO9781107415324.004</a>.</p>
+</div>
+<div id="ref-Purcell1949">
+<p>Purcell, W. R. 1949. “Capillary Pressures - Their Measurement Using Mercury and the Calculation of Permeability Therefrom.” <em>Journal of Petroleum Technology</em> 1 (02): 39–48. <a href="https://doi.org/10.2118/949039-G">https://doi.org/10.2118/949039-G</a>.</p>
+</div>
+<div id="ref-Skuse1992">
+<p>Skuse, Brian, Abbas Flroozabadl, and Henry J Ramey Jr. 1992. “Computation and Interpretation of Capillary Pressure From a Centrifuge.” <a href="https://doi.org/10.2118/18297-PA">https://doi.org/10.2118/18297-PA</a>.</p>
+</div>
+<div id="ref-Swanson1981">
+<p>Swanson, B. F. 1981. “A Simple Correlation Between Permeabilities and Mercury Capillary Pressures.” <em>Journal of Petroleum Technology</em> 33 (12): 2498–2504. <a href="https://doi.org/10.2118/8234-PA">https://doi.org/10.2118/8234-PA</a>.</p>
+</div>
+<div id="ref-Tiab2004">
+<p>Tiab, Djebbar, and E. C. Donaldson. 2004. <em>Petrophysics: theory and practice of measuring reservoir rock and fluid transport properties</em>. Boston: Golf Professional Pub.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="3-kabs-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"], ["thesis.epub", "EPUB"], ["thesis.docx", "Word"]],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

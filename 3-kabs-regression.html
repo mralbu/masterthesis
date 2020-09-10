@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Absolute Permeability Regression | Prediction of Petrophysical Properties Using Machine Learning and Hierarchical Multi-Task Linear Models</title>
+  <meta name="description" content="Chapter 3 Absolute Permeability Regression | Prediction of Petrophysical Properties Using Machine Learning and Hierarchical Multi-Task Linear Models" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Absolute Permeability Regression | Prediction of Petrophysical Properties Using Machine Learning and Hierarchical Multi-Task Linear Models" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Absolute Permeability Regression | Prediction of Petrophysical Properties Using Machine Learning and Hierarchical Multi-Task Linear Models" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="2-petrophysical-properties.html"/>
+<link rel="next" href="4-hierarchical-linear-regression.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html"><i class="fa fa-check"></i><b>2</b> Measuring Petrophysical Properties</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html#routine-core-analysis"><i class="fa fa-check"></i><b>2.1</b> Routine Core Analysis</a></li>
+<li class="chapter" data-level="2.2" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html#special-core-analysis"><i class="fa fa-check"></i><b>2.2</b> Special Core Analysis</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html#mercury-injection-capillary-pressure"><i class="fa fa-check"></i><b>2.2.1</b> Mercury Injection Capillary Pressure</a></li>
+<li class="chapter" data-level="2.2.2" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html#centrifuge-capillary-pressure"><i class="fa fa-check"></i><b>2.2.2</b> Centrifuge Capillary Pressure</a></li>
+<li class="chapter" data-level="2.2.3" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html#relative-permeability"><i class="fa fa-check"></i><b>2.2.3</b> Relative Permeability</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html"><i class="fa fa-check"></i><b>3</b> Absolute Permeability Regression</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#pchg-feat-eng"><i class="fa fa-check"></i><b>3.1</b> Mercury Porosimetry Feature Engineering</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#statistical-features"><i class="fa fa-check"></i><b>3.1.1</b> Statistical Features</a></li>
+<li class="chapter" data-level="3.1.2" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#linear-features"><i class="fa fa-check"></i><b>3.1.2</b> Linear Features</a></li>
+<li class="chapter" data-level="3.1.3" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#pore-throat-size-class-distribution"><i class="fa fa-check"></i><b>3.1.3</b> Pore Throat Size Class Distribution</a></li>
+<li class="chapter" data-level="3.1.4" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#gauss-mixture-fit-feat"><i class="fa fa-check"></i><b>3.1.4</b> Gaussian Mixture Fit Features</a></li>
+<li class="chapter" data-level="3.1.5" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#dimensionality-reduction-features"><i class="fa fa-check"></i><b>3.1.5</b> Dimensionality Reduction Features</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#absolute-permeability-regression-models"><i class="fa fa-check"></i><b>3.2</b> Absolute Permeability Regression Models</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#linear-regression-models"><i class="fa fa-check"></i><b>3.2.1</b> Linear Regression Models</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#non-linear-regression"><i class="fa fa-check"></i><b>3.2.2</b> Black-Box Machine Learning Models</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-hierarchical-linear-regression.html"><a href="4-hierarchical-linear-regression.html"><i class="fa fa-check"></i><b>4</b> Hierarchical Multi-Task Linear Regression</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-hierarchical-linear-regression.html"><a href="4-hierarchical-linear-regression.html#multi-task-linear-regression"><i class="fa fa-check"></i><b>4.1</b> Multi-Task Linear Regression</a></li>
+<li class="chapter" data-level="4.2" data-path="4-hierarchical-linear-regression.html"><a href="4-hierarchical-linear-regression.html#hierarchical-linear-regression-1"><i class="fa fa-check"></i><b>4.2</b> Hierarchical Linear Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Prediction of Petrophysical Properties Using Machine Learning and Hierarchical Multi-Task Linear Models</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="kabs-regression" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Absolute Permeability Regression</h1>
+<p>Several authors have studied the use of MICP curves to estimate absolute permeability. Many of the proposed regression models use linear correlations between the logarithm of absolute permeability <span class="math inline">\(\log{k_{abs}}\)</span> and many different proposed capillary pressure curve features <span class="citation">(Kolodzie <a href="#ref-Kolodzie1980" role="doc-biblioref">1980</a>; Pittman <a href="#ref-Pittman1992" role="doc-biblioref">1992</a>; Purcell <a href="#ref-Purcell1949" role="doc-biblioref">1949</a>; Swanson <a href="#ref-Swanson1981" role="doc-biblioref">1981</a>)</span>.</p>
+<p>Comparison of linear regression and machine learning models for the estimation of absolute permeability using MICP data has been performed on datasets from middle-east reservoirs by several authors <span class="citation">(Al Khalifah, Glover, and Lorinczi <a href="#ref-AlKhalifah2020" role="doc-biblioref">2020</a>; Nooruddin, Anifowose, and Abdulraheem <a href="#ref-Nooruddin2013" role="doc-biblioref">2013</a>)</span>, showing promising results for non-linear machine learning models.</p>
+<p>In this work, a comparison of linear regression and machine learning models for the estimation of absolute permeability using MICP data is performed on a dataset of 2324 MICP curves acquired on rock fragments of sandstone and carbonate reservoirs from several Brazilian reservoirs.</p>
+<div id="pchg-feat-eng" class="section level2">
+<h2><span class="header-section-number">3.1</span> Mercury Porosimetry Feature Engineering</h2>
+<p>Several feature engineering and regression techniques were evaluated on the assembled MICP dataset, exploring both linear correlation features as well as non-linear transformations. The following sections describe each of the feature extraction procedures and the choice and training of the selected regression models.</p>
+<div id="statistical-features" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Statistical Features</h3>
+<p>For each capillary pressure curve and associated pore volume probability distribution <span class="math inline">\(p(\log{r})\)</span>, mean pore throat radius <span class="math inline">\(r_{mean}\)</span> and median pore throat radius <span class="math inline">\(r_{median}\)</span> were calculated. Quantiles ranging from the 15th to the 90th pore throat radius values were estimated {<span class="math inline">\(r_{15},r_{20},...,r_{85},r_{90}\)</span>}. As a proxy for distribution heterogeneity, the interquartile-range <span class="math inline">\(iqr\)</span>, given by the difference of pore-throat radius associated with the 25th and 75th quartiles of the <span class="math inline">\(p(\log{r})\)</span> distribution was estimated.</p>
+<p><span class="math display" id="eq:iqr">\[\begin{equation} 
+  iqr = r_{25} - r_{75}
+  \tag{3.1}
+\end{equation}\]</span></p>
+</div>
+<div id="linear-features" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Linear Features</h3>
+<p>The following features, whose main authors are listed on Table <a href="3-kabs-regression.html#tab:linear-feat">3.1</a> as feature names, were calculated for each one of the datasets MICP curves. Each of these features is associated with a linear equation, proposed by its authors as regression models for <span class="math inline">\(\log{k_{abs}}\)</span>.</p>
+<table>
+<caption><span id="tab:linear-feat">Table 3.1: </span> Classical MICP linear correlation features</caption>
+<colgroup>
+<col width="29%" />
+<col width="34%" />
+<col width="36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Feature Name</th>
+<th align="center">Feature</th>
+<th align="center">Linear Equation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Swanson (Swanson 1981)</td>
+<td align="center"><span class="math inline">\((\frac{S_{hg}\phi}{P_c})_{max}\)</span></td>
+<td align="center"><span class="math inline">\(\log{k_{abs}}=a+b.(\frac{S_{hg}\phi}{P_c})_{max}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Purcell (Purcell 1949)</td>
+<td align="center"><span class="math inline">\(\int_0^1{\frac{dS_{hg}}{P_c^2}}\)</span></td>
+<td align="center"><span class="math inline">\(\log{k_{abs}}=a+b.\int_0^1{\frac{dS_{hg}}{P_c^2}}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Winland (Kolodzie 1980)</td>
+<td align="center"><span class="math inline">\(r_{35}\)</span></td>
+<td align="center"><span class="math inline">\(\log{k_{abs}}=a + b . r_{35}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Pittman (Pittman 1992)</td>
+<td align="center"><span class="math inline">\(r_{apex}\)</span></td>
+<td align="center"><span class="math inline">\(\log{k_{abs}}=a+b.r_{apex}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Dastidar (Dastidar 2007)</td>
+<td align="center"><span class="math inline">\(r_{WGM}=[\prod_{i=1}^nr_i^{w_i}]^{1/\sum{w_i}}\)</span></td>
+<td align="center"><span class="math inline">\(\log{k_{abs}}=a+b.\phi +c.r_{WGM}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="pore-throat-size-class-distribution" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> Pore Throat Size Class Distribution</h3>
+<p>Pore throat size ternary class distributions were calculated for each <span class="math inline">\(p(\log{r})\)</span> distribution, assigning classes micro, meso and macro to the percentage of the pore volume associated with pore throat sizes bellow 0.5 <span class="math inline">\(\mu m\)</span>, between 0.5 <span class="math inline">\(\mu m\)</span> and 2.5 <span class="math inline">\(\mu m\)</span>, and above 2.5 <span class="math inline">\(\mu m\)</span>, respectively.</p>
+<p>Figure <a href="3-kabs-regression.html#fig:pchg-classes">3.1</a> displays examples of ternary plots for micro, meso and macro pore volume percentage for <span class="math inline">\(p(\log{r})\)</span> distributions of samples from reservoirs of two Brazilian fields A and B.</p>
+<div class="figure" style="text-align: center"><span id="fig:pchg-classes"></span>
+<img src="figure/3-1-pchg-classes.png" alt="Pore-throat class distribution for two sample reservoirs (A and B)." width="75%" />
+<p class="caption">
+Figure 3.1: Pore-throat class distribution for two sample reservoirs (A and B).
+</p>
+</div>
+</div>
+<div id="gauss-mixture-fit-feat" class="section level3">
+<h3><span class="header-section-number">3.1.4</span> Gaussian Mixture Fit Features</h3>
+<p>Following the methodology proposed by <span class="citation">(Xu and Torres-Verdín <a href="#ref-Xu2013" role="doc-biblioref">2013</a>)</span>, bimodal gaussian mixture distributions, with parameters <span class="math inline">\(\mu_1\)</span>, <span class="math inline">\(\mu_2\)</span>, <span class="math inline">\(\sigma_1\)</span>, <span class="math inline">\(\sigma_2\)</span>, <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span>, were fitted to each MICP associated pore volume distributions <span class="math inline">\(p(\log{r})\)</span>, using the following approximation.</p>
+<p><span class="math display" id="eq:gauss-mixture">\[\begin{equation} 
+  p(\log{r}) \approx \lambda_1 \frac{1}{\sqrt{2\pi}\sigma_1}\exp{\frac{-(\log{r}-\mu_1)}{2\sigma_1^2}} + \lambda_2 \frac{1}{\sqrt{2\pi}\sigma_2}\exp{\frac{-(\log{r}-\mu_2)}{2\sigma_2^2}}
+  \tag{3.2}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:gauss-mixture-partition">\[\begin{equation} 
+  \lambda_1 + \lambda_2 = 1 
+  \tag{3.3}
+\end{equation}\]</span></p>
+<p>The parameters <span class="math inline">\(\mu_1\)</span>, <span class="math inline">\(\mu_2\)</span>, <span class="math inline">\(\sigma_1\)</span>, <span class="math inline">\(\sigma_2\)</span>, <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span>, provide a compact representation of the MICP associated pore volume distributions <span class="math inline">\(p(\log{r})\)</span>, as exemplified in Figures <a href="3-kabs-regression.html#fig:gauss-mixture-1">3.2</a> and <a href="3-kabs-regression.html#fig:gauss-mixture-2">3.3</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:gauss-mixture-1"></span>
+<img src="figure/3-2-pchg-gauss-mixture-1.png" alt="Example of bimodal gaussian mixture fit of p(log r) distribution." width="75%" />
+<p class="caption">
+Figure 3.2: Example of bimodal gaussian mixture fit of p(log r) distribution.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:gauss-mixture-2"></span>
+<img src="figure/3-3-pchg-gauss-mixture-2.png" alt="Gaussian mixture (red lines) fitted to p(log r) distributions of MICP data samples (black lines)." width="75%" />
+<p class="caption">
+Figure 3.3: Gaussian mixture (red lines) fitted to p(log r) distributions of MICP data samples (black lines).
+</p>
+</div>
+</div>
+<div id="dimensionality-reduction-features" class="section level3">
+<h3><span class="header-section-number">3.1.5</span> Dimensionality Reduction Features</h3>
+<p>Both linear and non-linear dimensionality reduction methods were used to extract features from the dataset of MICP curves. Dimensionality reduction techniques allow for the approximation of the dataset using a lower-dimensional representation, useful for data exploration and visualization and for data compression.</p>
+<p>Using as input pore-throat radius quantiles {<span class="math inline">\(r_{15},r_{20},...,r_{85},r_{90}\)</span>}, the first two principal components PC1 and PC2 were estimated for each of the sample MICP curves using Principal Component Analysis <span class="citation">(Hastie, Tibshirani, and Friedman <a href="#ref-Hastie2009" role="doc-biblioref">2009</a>)</span>. The first two principal components represented a total of 96.1% of the variance in the dataset. A graphical depiction of the PC1 and PC2 features, colored by absolute permeability can be seen on Figure <a href="3-kabs-regression.html#fig:pca-features">3.4</a>.</p>
+<p>The first and second principal components were shown to be correlated with absolute permeability <span class="math inline">\(k_{abs}\)</span> and interquartile range <span class="math inline">\(iqr\)</span>, respectively, as displayed on Figures <a href="3-kabs-regression.html#fig:pca-PC1">3.5</a> and <a href="3-kabs-regression.html#fig:pca-PC2">3.6</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:pca-features"></span>
+<img src="figure/3-4-pca-features.png" alt="First two principal components of each of the datasets MICP samples." width="75%" />
+<p class="caption">
+Figure 3.4: First two principal components of each of the datasets MICP samples.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:pca-PC1"></span>
+<img src="figure/3-5-pca-PC1-kabs.png" alt="Negative correlation between absolute permeability and the first principal component." width="75%" />
+<p class="caption">
+Figure 3.5: Negative correlation between absolute permeability and the first principal component.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:pca-PC2"></span>
+<img src="figure/3-6-pca-PC2-iqr.png" alt="Positive correlation between the interquartile-range iqr and the second principal component PC2." width="75%" />
+<p class="caption">
+Figure 3.6: Positive correlation between the interquartile-range iqr and the second principal component PC2.
+</p>
+</div>
+
+<p>Non-linear dimensionality reduction features were also estimated using Uniform Manifold Approximation and Projection, also known as UMAP <span class="citation">(McInnes and Healy <a href="#ref-McInnes2018" role="doc-biblioref">2018</a>)</span>, using as input pore-throat radius quantiles {<span class="math inline">\(r_{15},r_{20},...,r_{85},r_{90}\)</span>}.</p>
+<div class="figure" style="text-align: center"><span id="fig:umap"></span>
+<img src="figure/3-7-umap.png" alt="MICP curves non-linear decomposition using UMAP." width="75%" />
+<p class="caption">
+Figure 3.7: MICP curves non-linear decomposition using UMAP.
+</p>
+</div>
+
+<p>The Uniform Manifold Approximation and Projection technique constructs a high dimensional graph representation of the data and optimizes a low-dimensional manifold to be as structurally similar to the high dimensional graph as possible <span class="citation">(McInnes and Healy <a href="#ref-McInnes2018" role="doc-biblioref">2018</a>)</span>. Due to its distance preserving properties, the low-dimensional manifold, represented in Figure <a href="3-kabs-regression.html#fig:umap">3.7</a> by variables <span class="math inline">\(x_1.umap\)</span> and <span class="math inline">\(x_2.umap\)</span>, is useful for visualization and identification of similar MICP curve samples.</p>
+<p>In Figure <a href="3-kabs-regression.html#fig:umap-clustering">3.8</a>, this property is exemplified by a sequence of three pairs of plots, showing that samples mapped to the same regions of the UMAP manifold, marked in the red in each of the plot pairs, correspond to distributions <span class="math inline">\(p(\log{r})\)</span> with similar characteristics.</p>
+<div class="figure" style="text-align: center"><span id="fig:umap-clustering"></span>
+<img src="figure/3-8-umap-I.png" alt="Manifold maps (left) showing areas with similar associated pore volume distributions p(log r) (right)." width="90%" /><img src="figure/3-8-umap-II.png" alt="Manifold maps (left) showing areas with similar associated pore volume distributions p(log r) (right)." width="90%" /><img src="figure/3-8-umap-III.png" alt="Manifold maps (left) showing areas with similar associated pore volume distributions p(log r) (right)." width="90%" />
+<p class="caption">
+Figure 3.8: Manifold maps (left) showing areas with similar associated pore volume distributions p(log r) (right).
+</p>
+</div>
+</div>
+</div>
+<div id="absolute-permeability-regression-models" class="section level2">
+<h2><span class="header-section-number">3.2</span> Absolute Permeability Regression Models</h2>
+<p>The regression metrics root mean squared error <a href="3-kabs-regression.html#eq:RMSE">(3.4)</a>, median absolute error <a href="3-kabs-regression.html#eq:MAE">(3.5)</a> and <span class="math inline">\(R^2\)</span> <a href="3-kabs-regression.html#eq:R2">(3.6)</a> were evaluated for the trained regression models. Due to the issues regarding the representativeness of the rock fragments with respect to the measured absolute permeability values, discussed on chapter , minimization of the median absolute deviation metric <a href="3-kabs-regression.html#eq:MAE">(3.5)</a> was chosen to increase the robustness to outliers of the trained non-linear regression models, described in section . In both linear and non-linear regression methods, the <span class="math inline">\(R^2\)</span> metric <a href="3-kabs-regression.html#eq:R2">(3.6)</a> was used for further assessment of the trained regression models.</p>
+<p><span class="math display" id="eq:RMSE">\[\begin{equation} 
+  \text{RMSE} = \sqrt{\frac{\sum_{i=1}^n{(\log{\hat{k}_{{abs}_i}}-\log{k_{{abs}_i}})^2}}{n}}
+  \tag{3.4}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:MAE">\[\begin{equation} 
+  \text{MAE} = \frac{\sum_{i=1}^n{|\log{\hat{k}_{{abs}_i}}-\log{k_{{abs}_i}}}|}{n}
+  \tag{3.5}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:R2">\[\begin{equation} 
+  R^2 = 1-\frac{\sum_{i=1}^n{(\log{\hat{k}_{{abs}_i}}-\log{k_{{abs}_i}})^2}}{\sum_{i=1}^n{(\log{k_{{abs}_i}}-\overline{\log{k_{{abs}_i}}})^2}}
+  \tag{3.6}
+\end{equation}\]</span></p>
+<div id="linear-regression-models" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Linear Regression Models</h3>
+<p>The linear features, described in section , were used to fit linear regression logarithmic absolute permeability <span class="math inline">\(\log{k_{abs}}\)</span> models.</p>
+<p>Among the fitted linear regression models, the Winland and Swanson models obtained the lowest root mean squared error and highest coefficient of determination metrics.</p>
+<p>Figure <a href="3-kabs-regression.html#fig:linear-models">3.9</a> shows a graphical representation of the fitted models, where a significant number of outlier logarithmic absolute permeability estimates <span class="math inline">\(\log{\hat{k}_{abs}}\)</span> , with more than one order of magnitude errors, can be seen. The presence of this large number of outliers can be explained by the limited rock fragment representativeness of the core sample pore volume for heterogeneous reservoirs, described in chapter .</p>
+<div class="figure" style="text-align: center"><span id="fig:linear-models"></span>
+<img src="figure/3-9-linear-models.png" alt="Visual evaluation of the predicted and observed absolute permeability models using linear features." width="75%" />
+<p class="caption">
+Figure 3.9: Visual evaluation of the predicted and observed absolute permeability models using linear features.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:linear-models-R2"></span>
+<img src="figure/3-10-linear-models-R2.png" alt="Comparison of the $R^2$ metric for the fitted linear regression models." width="75%" />
+<p class="caption">
+Figure 3.10: Comparison of the <span class="math inline">\(R^2\)</span> metric for the fitted linear regression models.
+</p>
+</div>
+</div>
+<div id="non-linear-regression" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Black-Box Machine Learning Models</h3>
+<p>Using the features described in section , six additional non-linear regression models were fit to the dataset using machine learning models. The 2324 MICP curves were split between training and test data, with a eighty to twenty percent ratio. Using the training set, each algorithm went through a hyper-parameter tuning procedure, using ten times repeated five-fold cross-validation error estimation, on a grid of selected hyper-parameters.</p>
+<p>Two <span class="math inline">\(knn\)</span> nearest neighbors models <span class="citation">(P. Murphy <a href="#ref-P.Murphy2012" role="doc-biblioref">2012</a>)</span>, were fit to the training set, one using features extracted using PCA <span class="citation">(Hastie, Tibshirani, and Friedman <a href="#ref-Hastie2009" role="doc-biblioref">2009</a>)</span> and the other features extracted using UMAP non-linear dimensionality reduction <span class="citation">(McInnes and Healy <a href="#ref-McInnes2018" role="doc-biblioref">2018</a>)</span>.</p>
+<p>A simple linear regression model was fit using the features extracted from the bi-modal gaussian mixture model proposed by <span class="citation">(Xu and Torres-Verdín <a href="#ref-Xu2013" role="doc-biblioref">2013</a>)</span>, described in section .</p>
+<p>A support vector regression (SVR) model, a random forest model and a gradient boosted trees model <span class="citation">(Hastie, Tibshirani, and Friedman <a href="#ref-Hastie2009" role="doc-biblioref">2009</a>)</span> were fit to an expanded feature set, consisting of the features proposed by Swanson, Winland, Purcell, the sample porosity <span class="math inline">\(\phi\)</span>, the micropores and mesopores ternary class distributions, the UMAP features and the bi-modal gaussian mixtures distribution features. A pre-processing standardizing step was applied to each feature. The gradient boosted trees model was fitted using the implementation provided by the XGBoost library <span class="citation">(Chen and Guestrin <a href="#ref-Chen2016" role="doc-biblioref">2016</a>)</span>.</p>
+<div class="figure" style="text-align: center"><span id="fig:cross-validation"></span>
+<img src="figure/3-11-cross-validation.png" alt="Five-fold cross-validation procedure." width="70%" />
+<p class="caption">
+Figure 3.11: Five-fold cross-validation procedure.
+</p>
+</div>
+
+<p>Table <a href="3-kabs-regression.html#tab:regression-metrics">3.2</a> and Figure <a href="3-kabs-regression.html#fig:cross-validation-metrics">3.12</a> show median values of repeated five-fold cross-validated MAE, <span class="math inline">\(R^2\)</span> and RMSE metrics for each of the trained regression models. The regression models with the lowest median absolute error were the SVR, randomForest and gradient boosted trees XGB models. Through the use of a radial basis function kernel and an optimization procedure that minimizes hinge loss <span class="citation">(Hastie, Tibshirani, and Friedman <a href="#ref-Hastie2009" role="doc-biblioref">2009</a>)</span>, the SVR algorithm provides outlier robust predictions. The random forest and gradient boosted trees algorithms use randomized selection of features and data subsets, bagging and boosting techniques, respectively, to reduce prediction errors of ensembles of simpler decision tree models <span class="citation">(Chen and Guestrin <a href="#ref-Chen2016" role="doc-biblioref">2016</a>)</span>.</p>
+<table style="width:62%;">
+<caption><span id="tab:regression-metrics">Table 3.2: </span> Median repeated five-fold cross-validated MAE, <span class="math inline">\(R^2\)</span> and RMSE metrics for each model.</caption>
+<colgroup>
+<col width="29%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Regression Model</th>
+<th align="center">MAE</th>
+<th align="center"><span class="math inline">\(R^2\)</span></th>
+<th align="center">RMSE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">SVR</td>
+<td align="center">0.412</td>
+<td align="center">0.722</td>
+<td align="center">0.596</td>
+</tr>
+<tr class="even">
+<td align="center">randomForest</td>
+<td align="center">0.437</td>
+<td align="center">0.712</td>
+<td align="center">0.604</td>
+</tr>
+<tr class="odd">
+<td align="center">XGB</td>
+<td align="center">0.439</td>
+<td align="center">0.711</td>
+<td align="center">0.605</td>
+</tr>
+<tr class="even">
+<td align="center">Swanson</td>
+<td align="center">0.471</td>
+<td align="center">0.681</td>
+<td align="center">0.639</td>
+</tr>
+<tr class="odd">
+<td align="center">GaussianMixture</td>
+<td align="center">0.477</td>
+<td align="center">0.675</td>
+<td align="center">0.641</td>
+</tr>
+<tr class="even">
+<td align="center">Winland</td>
+<td align="center">0.481</td>
+<td align="center">0.674</td>
+<td align="center">0.643</td>
+</tr>
+<tr class="odd">
+<td align="center">Purcell</td>
+<td align="center">0.487</td>
+<td align="center">0.661</td>
+<td align="center">0.654</td>
+</tr>
+<tr class="even">
+<td align="center">Dastidar</td>
+<td align="center">0.520</td>
+<td align="center">0.642</td>
+<td align="center">0.673</td>
+</tr>
+<tr class="odd">
+<td align="center">knnUMAP</td>
+<td align="center">0.565</td>
+<td align="center">0.562</td>
+<td align="center">0.744</td>
+</tr>
+<tr class="even">
+<td align="center">knnPCA</td>
+<td align="center">0.581</td>
+<td align="center">0.547</td>
+<td align="center">0.753</td>
+</tr>
+<tr class="odd">
+<td align="center">Pittman</td>
+<td align="center">0.613</td>
+<td align="center">0.523</td>
+<td align="center">0.775</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span id="fig:cross-validation-metrics"></span>
+<img src="figure/3-12-cross-validation-MAE.png" alt="Boxplots for repeated five-fold cross-validated MAE, $R^2$ and RMSE metric results for each model." width="75%" /><img src="figure/3-12-cross-validation-R2.png" alt="Boxplots for repeated five-fold cross-validated MAE, $R^2$ and RMSE metric results for each model." width="75%" />
+<p class="caption">
+Figure 3.12: Boxplots for repeated five-fold cross-validated MAE, <span class="math inline">\(R^2\)</span> and RMSE metric results for each model.
+</p>
+</div>
+<p>Non-linear machine learning models presented consistently lower prediction errors, as can be seen on Figure <a href="3-kabs-regression.html#fig:cross-validation-metrics">3.12</a>. On Figure <a href="3-kabs-regression.html#fig:cross-validation-models">3.13</a>, a visual comparison between linear and non-linear machine learning models of the predicted versus measured data for the test dataset is shown. Although the non-linear machine-learning models did obtain better MAE, <span class="math inline">\(R^2\)</span> and RMSE metrics results, a significant number of outliers are still present, probably related to the issue of limited rock fragment representativeness of highly heterogeneous reservoirs described in chapter .</p>
+<div class="figure" style="text-align: center"><span id="fig:cross-validation-models"></span>
+<img src="figure/3-13-cross-validation-models.png" alt="Visual evaluation of the estimated absolute permeability models using Machine Learning and linear models." width="90%" />
+<p class="caption">
+Figure 3.13: Visual evaluation of the estimated absolute permeability models using Machine Learning and linear models.
+</p>
+</div>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-AlKhalifah2020">
+<p>Al Khalifah, H., P. W. J. Glover, and P. Lorinczi. 2020. “Permeability prediction and diagenesis in tight carbonates using machine learning techniques.” <em>Marine and Petroleum Geology</em> 112 (May 2019): 104096. <a href="https://doi.org/10.1016/j.marpetgeo.2019.104096">https://doi.org/10.1016/j.marpetgeo.2019.104096</a>.</p>
+</div>
+<div id="ref-Chen2016">
+<p>Chen, Tianqi, and Carlos Guestrin. 2016. “XGBoost: A scalable tree boosting system.” <em>Proceedings of the ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</em> 13-17-Augu: 785–94. <a href="https://doi.org/10.1145/2939672.2939785">https://doi.org/10.1145/2939672.2939785</a>.</p>
+</div>
+<div id="ref-Hastie2009">
+<p>Hastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2009. <em>The Elements of Statistical Learning: Data Mining, Inference, and Prediction</em>.</p>
+</div>
+<div id="ref-Kolodzie1980">
+<p>Kolodzie, Stanley. 1980. “Analysis of Pore Throat Size and Use of the Waxman-Smits Equation to Determine Ooip in Spindle Field, Colorado.” In <em>SPE Annual Technical Conference and Exhibition</em>, 10. Dallas, Texas: Society of Petroleum Engineers. <a href="https://doi.org/10.2118/9382-MS">https://doi.org/10.2118/9382-MS</a>.</p>
+</div>
+<div id="ref-McInnes2018">
+<p>McInnes, L., and J. Healy. 2018. “UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction.”</p>
+</div>
+<div id="ref-Nooruddin2013">
+<p>Nooruddin, Hasan A., Fatai Anifowose, and Abdulazeez Abdulraheem. 2013. “Applying Artificial Intelligence Techniques to Develop Permeability Predictive Models using Mercury Injection Capillary-Pressure Data.” <em>SPE Saudi Arabia Section Technical Symposium and Exhibition</em>, 1–16. <a href="https://doi.org/10.2118/168109-MS">https://doi.org/10.2118/168109-MS</a>.</p>
+</div>
+<div id="ref-Pittman1992">
+<p>Pittman, E. D. 1992. “Relationship of porosity and permeability to various parameters derived from mercury injection-capillary pressure curves for sandstone.” <a href="https://doi.org/10.1017/CBO9781107415324.004">https://doi.org/10.1017/CBO9781107415324.004</a>.</p>
+</div>
+<div id="ref-P.Murphy2012">
+<p>P. Murphy, Kevin. 2012. <em>Machine Learning: A Probabilistic Perspective</em>. <a href="https://doi.org/10.1007/SpringerReference_35834">https://doi.org/10.1007/SpringerReference_35834</a>.</p>
+</div>
+<div id="ref-Purcell1949">
+<p>Purcell, W. R. 1949. “Capillary Pressures - Their Measurement Using Mercury and the Calculation of Permeability Therefrom.” <em>Journal of Petroleum Technology</em> 1 (02): 39–48. <a href="https://doi.org/10.2118/949039-G">https://doi.org/10.2118/949039-G</a>.</p>
+</div>
+<div id="ref-Swanson1981">
+<p>Swanson, B. F. 1981. “A Simple Correlation Between Permeabilities and Mercury Capillary Pressures.” <em>Journal of Petroleum Technology</em> 33 (12): 2498–2504. <a href="https://doi.org/10.2118/8234-PA">https://doi.org/10.2118/8234-PA</a>.</p>
+</div>
+<div id="ref-Xu2013">
+<p>Xu, C., and C. Torres-Verdín. 2013. “Pore System Characterization and Petrophysical Classification Using a Bimodal Gaussian Density Function.” <em>Math Geosci</em>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="2-petrophysical-properties.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4-hierarchical-linear-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"], ["thesis.epub", "EPUB"], ["thesis.docx", "Word"]],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

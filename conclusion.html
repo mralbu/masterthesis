@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Conclusion | Prediction of Petrophysical Properties Using Machine Learning and Hierarchical Multi-Task Linear Models</title>
+  <meta name="description" content="Conclusion | Prediction of Petrophysical Properties Using Machine Learning and Hierarchical Multi-Task Linear Models" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Conclusion | Prediction of Petrophysical Properties Using Machine Learning and Hierarchical Multi-Task Linear Models" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Conclusion | Prediction of Petrophysical Properties Using Machine Learning and Hierarchical Multi-Task Linear Models" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="4-hierarchical-linear-regression.html"/>
+<link rel="next" href="bibliography.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html"><i class="fa fa-check"></i><b>2</b> Measuring Petrophysical Properties</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html#routine-core-analysis"><i class="fa fa-check"></i><b>2.1</b> Routine Core Analysis</a></li>
+<li class="chapter" data-level="2.2" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html#special-core-analysis"><i class="fa fa-check"></i><b>2.2</b> Special Core Analysis</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html#mercury-injection-capillary-pressure"><i class="fa fa-check"></i><b>2.2.1</b> Mercury Injection Capillary Pressure</a></li>
+<li class="chapter" data-level="2.2.2" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html#centrifuge-capillary-pressure"><i class="fa fa-check"></i><b>2.2.2</b> Centrifuge Capillary Pressure</a></li>
+<li class="chapter" data-level="2.2.3" data-path="2-petrophysical-properties.html"><a href="2-petrophysical-properties.html#relative-permeability"><i class="fa fa-check"></i><b>2.2.3</b> Relative Permeability</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html"><i class="fa fa-check"></i><b>3</b> Absolute Permeability Regression</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#pchg-feat-eng"><i class="fa fa-check"></i><b>3.1</b> Mercury Porosimetry Feature Engineering</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#statistical-features"><i class="fa fa-check"></i><b>3.1.1</b> Statistical Features</a></li>
+<li class="chapter" data-level="3.1.2" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#linear-features"><i class="fa fa-check"></i><b>3.1.2</b> Linear Features</a></li>
+<li class="chapter" data-level="3.1.3" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#pore-throat-size-class-distribution"><i class="fa fa-check"></i><b>3.1.3</b> Pore Throat Size Class Distribution</a></li>
+<li class="chapter" data-level="3.1.4" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#gauss-mixture-fit-feat"><i class="fa fa-check"></i><b>3.1.4</b> Gaussian Mixture Fit Features</a></li>
+<li class="chapter" data-level="3.1.5" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#dimensionality-reduction-features"><i class="fa fa-check"></i><b>3.1.5</b> Dimensionality Reduction Features</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#absolute-permeability-regression-models"><i class="fa fa-check"></i><b>3.2</b> Absolute Permeability Regression Models</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#linear-regression-models"><i class="fa fa-check"></i><b>3.2.1</b> Linear Regression Models</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-kabs-regression.html"><a href="3-kabs-regression.html#non-linear-regression"><i class="fa fa-check"></i><b>3.2.2</b> Black-Box Machine Learning Models</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-hierarchical-linear-regression.html"><a href="4-hierarchical-linear-regression.html"><i class="fa fa-check"></i><b>4</b> Hierarchical Multi-Task Linear Regression</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-hierarchical-linear-regression.html"><a href="4-hierarchical-linear-regression.html#multi-task-linear-regression"><i class="fa fa-check"></i><b>4.1</b> Multi-Task Linear Regression</a></li>
+<li class="chapter" data-level="4.2" data-path="4-hierarchical-linear-regression.html"><a href="4-hierarchical-linear-regression.html#hierarchical-linear-regression-1"><i class="fa fa-check"></i><b>4.2</b> Hierarchical Linear Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Prediction of Petrophysical Properties Using Machine Learning and Hierarchical Multi-Task Linear Models</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="conclusion" class="section level1 unnumbered">
+<h1>Conclusion</h1>
+<p>In this work, machine learning and statistical regression models were evaluated for the prediction of routine and special core analysis petrophysical properties on datasets containing experimental results for rock samples from many Brazilian reservoirs.</p>
+<p>Several feature engineering and machine learning techniques were evaluated for the estimation of absolute permeability from mercury injection capillary pressure curves. The absolute permeability regression models that achieved the lowest median absolute errors and largest correlation coefficients used the support-vector machine (SVR), random forest or gradient boosted decision trees algorithms, and several features extracted from the mercury porosimetry capillary pressure curve data. Among the linear models for prediction of absolute permeability, the models proposed by Swanson <span class="citation">(Swanson <a href="#ref-Swanson1981" role="doc-biblioref">1981</a>)</span> and Winland <span class="citation">(Kolodzie <a href="#ref-Kolodzie1980" role="doc-biblioref">1980</a>)</span> obtained the lowest root mean squared errors and highest correlation coefficients.</p>
+<p>Using a parametric formulation, special core analysis capillary pressure and relative permeability curve regression problems were framed in a multi-task regression approach. For the estimation of capillary pressure curve parameters, an analytic formulation of the multi-task linear regression problem was considered using the multivariate gaussian conditional distribution. This model was evaluated on an experimental dataset, comparing average predictions and samples from the conditional distribution of parameters, to the observed capillary pressure curve parameters. Although significant dispersion of experimental and predicted parameters values were observed, it was possible to identify that predictions followed expected linear tendencies of capillary pressure curve parameters and absolute permeability.</p>
+<p>Posterior distribution of partially pooled varying slopes hierarchical and completely pooled simple linear regression models, with respect to logarithmic absolute permeability, were inferred for relative permeability parameters. Hierarchical linear regression models displayed overall improved information criteria metrics, evaluated using bayesian Watanabe-Akaike and Leave-one-out information criteria. Due to the regularizing effect of the information sharing between different reservoir categories, posterior distribution of relative permeability parameters of hierarchical linear regression models displayed smaller uncertainties and greater consistency.</p>
+<p>Posterior distribution of latent parameters of hierarchical linear regression models represent average behavior of model parameters across the different evaluated categories and may be used as quantified petrophysical parameter model analogues for petrophysical characterization of reservoirs with similar characteristics as the ones used in the assembled model, but with no sampled data.</p>
+
+<!--
+The bib chunk below must go last in this document according to how R Markdown renders.  More info is at http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html
+-->
+
+<!-- 
+If you'd like to change the name of the bibliography to something else,
+delete "References" and replace it.
+-->
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Kolodzie1980">
+<p>Kolodzie, Stanley. 1980. “Analysis of Pore Throat Size and Use of the Waxman-Smits Equation to Determine Ooip in Spindle Field, Colorado.” In <em>SPE Annual Technical Conference and Exhibition</em>, 10. Dallas, Texas: Society of Petroleum Engineers. <a href="https://doi.org/10.2118/9382-MS">https://doi.org/10.2118/9382-MS</a>.</p>
+</div>
+<div id="ref-Swanson1981">
+<p>Swanson, B. F. 1981. “A Simple Correlation Between Permeabilities and Mercury Capillary Pressures.” <em>Journal of Petroleum Technology</em> 33 (12): 2498–2504. <a href="https://doi.org/10.2118/8234-PA">https://doi.org/10.2118/8234-PA</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="4-hierarchical-linear-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bibliography.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"], ["thesis.epub", "EPUB"], ["thesis.docx", "Word"]],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
